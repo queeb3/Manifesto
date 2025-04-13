@@ -60,7 +60,26 @@ lowest point will be before you dig yourself a pit that cannot be escaped with m
     run into making a chain of hierarchies which will start to hurt you in the long run, prefer putting
     other data inside new data if you need common functionality this can be through general purpose utility
     data that is meant to live in other data or one off variables with common relatives in other data.
-    (composition = wideness | inheritence = depth at this level)
+    (composition = wideness | inheritence = depth at this level).
+
+    Composition:
+
+            struct XY { float x, y};
+
+            struct Box {
+                XY topRight;
+                XY bottomLeft;
+            };
+
+    VS Inheritance:
+
+            class Point { float x, y; }
+
+            class Bounds { Point TopR, BottomLeft; }
+
+            class Box : Bounds {} // <--- why prefer extra code
+            class Circle : Bounds {} // <--- doesnt work in this case and needs new logic... more code
+
 
 # LOGIC FLOW
 Logic should always be handled top down towards the final process call that holds the highest mutation
