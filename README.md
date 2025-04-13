@@ -14,14 +14,17 @@ years of their lifes work and money spent on a degree that teaches these princip
 OOD operates on principles that encourages a tree like structure for defining the shape of your coding "world"
 which provides the illusion that you are in fact coding a world to solve a problem, this means combining
 data and logic together in the form of a class object with variables and methods. This sounds amazing on paper
-and executes like sand paper, the reason being is that tree structure it enforces on you... Inheritance,
-you want a tree object? inherit from foliage, which inherits from environmentItem, which inherits from
+and executes like sand paper, the reason being is that tree structure it enforces on you...
+
+Inheritance,you want a tree object? inherit from foliage, which inherits from environmentItem, which inherits from
 staticObject, which inherits from gameObject... I can go on but now lets throw a wrench in to this mess.
+
 What happens if I want now a dynamic tree that can be cut, but some trees aren't allowed to be cut, because
 game logic, now I need a "new tree path" for code that already exists in another path but with a inheritance
 chain from DynamicObject instead of StaticObject. Like dude just make a tree struct that holds data relative
-to the tree alone and add a bool or flag to it to determine if it can be cut... That is the difference between
-DoD and OOD, you can still do this in OOP mind you, let me show you:
+to the tree alone and add a bool or flag to it to determine if it can be cut...
+
+That is the difference between DoD and OOD, you can still do this in OOP mind you, let me show you:
 
     class GameObject {}
     class StaticObj : GameObject {}
@@ -32,10 +35,13 @@ DoD and OOD, you can still do this in OOP mind you, let me show you:
     class TreeDyn : DEnvironmentObj {}
 
 You can see how the OOD logic falls apart here and of course people have "opinions" and think this is fine,
-or they may offer "insight" as to a workaround that solves this issue... key word "workaround", why do you
-need to sell me a workaround to something that can be so simply described especially since OOD and OOP are so
-good and is the "industry standard". Now let me show you another way that achieves the same outcome with vastly
-different qualities and performance boosts by nature:
+or they may offer "insight" as to a workaround that solves this issue...
+
+Key word "workaround", why do you need to sell me a workaround to something that can be so simply
+described especially since OOD and OOP are so good and is the "industry standard".
+
+Now let me show you another way that achieves the same outcome with vastly different qualities and performance
+boosts by nature:
 
     // again you can do DoD in OOP
     struct GameObjectData {
@@ -56,9 +62,12 @@ different qualities and performance boosts by nature:
     }
 
 Now with this implementation you can store just tree in its own state and work on only trees in a single loop
-or many, your choice. Why would you not want to prefer the above when you can just expand the amount of data
-by simply creating new structs/records/variables in place of inheritance. So what is the main advantage of this
-style?
+or many, your choice.
+
+Why would you not want to prefer the above when you can just expand the amount of data by simply creating
+new structs/records/variables in place of inheritance.
+
+So what is the main advantage of this style?
 
     func Cut_Tree(Player p, float range) {
         foreach(var tree in All_Trees) {
@@ -70,11 +79,14 @@ style?
     }
 
 This is of course a very rudamentory example but proves a point just as well, its isolated logic dedicated to
-just a specific set of data and is only handled if the player tries to cut a tree. Of course nitpickers will
-say this is inneficient because its scanning all trees, ITS an example, want it to be optimized provide a trees
-in range check that constantly checks passively what trees the player is near and if any are cuttable add to
-a smaller array and use that instead for whenever a player tries to cut. It's extremely simple and straightfoward,
-no inheritance just logic and data defined explicitly for the use case and problem of cutting a tree.
+just a specific set of data and is only handled if the player tries to cut a tree.
+
+Of course nitpickers will say this is inneficient because its scanning all trees, ITS an example, want it to
+be optimized provide a trees in range check that constantly checks passively what trees the player is near and
+if any are cuttable add to a smaller array and use that instead for whenever a player tries to cut.
+
+It's extremely simple and straightfoward, no inheritance just logic and data defined explicitly for the use case
+and problem of cutting a tree.
 
 In the beginning of this manifesto I stated that this was something I learned as progressed through coding for the
 first time, let me clarify a summary of my journey to my current understanding to help envigorate you to maybe start
@@ -82,22 +94,32 @@ questioning the industries standards and best practices:
 
 I started to learn how to be a programmer for the first time in Sept 2024, my goal? Make a fully dynamic stat generator
 for a unity game idea I had for a stat collector style game that actually caused impact... Over some time working on it
-I learned many things like the differences between structs and classes, how to properly use a enum, how to make a loop;
+I learned many things like the differences between structs and classes, how to properly use an enum, how to make a loop.
+
 I was really entralled by the idea of being a programmer, however, every time I picked up coding again it felt tedious
 to try and code using OOD it just always felt confusing even when I did start understanding some of it, this time felt
-different for some reason, as if I knew a change was coming... After about a month of working I discovered a video on
-ECS that talked about DoD for the first time in my life something made a little more sense with code speak, I do not
-know why but what they were saying just made sense in my head and sounded logical and reasonable for how a copmuter
-should act on and read data. So I started to change my stat system into a standalone ECS style stat generator, of course
-I was still using OOP and OOD to do it because I didn't at the time fully grasp the usage concepts even though I knew
-what they were saying. Iteration after iteration I coded for 8+ hours a night with many refactors, which I've grown to
-love doing, and yet I just could not make the stat gen work and I gave up on the idea... I did NOT give up on programming
-this time and instead I made a new project for just a ECS engine in C# and got the first generic based ECS working with
-a shit ton of Dictionaries and Queues... it was shit and ran like it too, BUT I learned and decided to scrap it and start
-over again... and again.... again, I made a total of 5 working ECS in C# and made small test games with them
-(console+logic) and it was soooo much fun. My fifth implementation was my best so far utilizing unsafe code to make
-custom allocators and byte based buffers with direct casting for the best cache locality I could attempt for my
-knowledge. It was pushing logically 50 million plus entities a second with 10-15 components structs and this was with
+different for some reason, as if I knew a change was coming...
+
+After about a month of working I discovered a video on ECS that talked about DoD for the first time in my life something
+made a little more sense with code speak, I do not know why but what they were saying just made sense in my head and
+sounded logical and reasonable for how a computer should act on and read data. So I started to change my stat system into
+a standalone ECS style stat generator, of course I was still using OOP and OOD to do it because I didn't at the time
+fully grasp the usage concepts even though I knew what they were saying.
+
+Iteration after iteration I coded for 8+ hours a night with many refactors, which I've grown to love doing, and yet I
+just could not make the stat gen work and I gave up on the idea...
+
+I did NOT give up on programming this time and instead I made a new project for just a ECS engine in C# and got the first
+generic based ECS working with a shit ton of Dictionaries and Queues...
+
+It was shit and ran like it too, BUT I learned and decided to scrap it and start over again...
+and again.... again, I made a total of 5 working ECS in C# and made small test games with them (console+logic)
+and it was soooo much fun.
+
+My fifth implementation was my best so far utilizing unsafe code to make custom allocators and byte based buffers with
+direct casting for the best cache locality I could attempt for my knowledge.
+
+It was pushing logically 50 million plus entities a second with 10-15 components structs and this was with
 AoS and not SoA beacuse of its generic nature without source generation.
 
 So when I say "I learned how to program" I literally learned how to program in 6 months to that level with absolutely
