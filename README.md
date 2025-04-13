@@ -1,5 +1,5 @@
 # Manifesto
-STRUCTURE FLOW FOR ALL CODE
+STRUCTURE FLOW OF ALL CODE FOR DATA NOT OBJECTS
 
 ## Intro
 A DoD look-about based on my personal journey learning how to code from scratch.
