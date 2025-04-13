@@ -123,7 +123,7 @@ and problem of cutting a tree.
 
 ---
 
-# My Story and Journey to understanding and becoming a Programmer
+# My  Journey to understanding and becoming a Programmer
 In the beginning of this manifesto I stated that this was something I learned as progressed through coding for the
 first time, let me clarify a summary of my journey to my current understanding to help envigorate you to maybe start
 questioning the industries standards and best practices:
