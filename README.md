@@ -1,7 +1,7 @@
 # Manifesto
     STRUCTURE FLOW FOR ALL CODE
 
-# USER
+#USER
     Pretty self explainetory... its the input you will recieve externally into your solution
     to a problem you are solving for the user or client.
 
@@ -12,7 +12,7 @@
     - how = read from os IO or api that allows the same (glfw)
     - error = none because its strict controlled whats allowed to interact
 
-# SERVICE
+#SERVICE
     Services are the solution to the problem you are attempting to solve through programming.
     Data acts as the state of the problem while systems are the helpers that alter the data,
     to ensure data stays correct and current for the problem being given(input).
@@ -24,7 +24,7 @@
     - how = function calls that process input to new data or mut data predictibly
     - error = return empty or no data change and move to next proc call
 
-# ACTIONS
+#ACTIONS
     The course of flow on how an app or process should execute such that it causes minimal waste
     for the hardware.
 
@@ -36,7 +36,7 @@
     - act on state (render and logic)
     - repeat
 
-# LAYERS
+#LAYERS
     Layers depend on what kind of depth you are seeking or how high you wish to build instead of wideness
     in cases of wideness you get more bang for you buck due to being able to scale infinitely wide while
     still maintaining good performance but the taller you go the more indirection is introduced causing
@@ -62,7 +62,7 @@
         data that is meant to live in other data or one off variables with common relatives in other data.
         (composition = wideness | inheritence = depth at this level)
 
-# LOGIC FLOW
+#LOGIC FLOW
     Logic should always be handled top down towards the final process call that holds the highest mutation
     count for individual data. when a  new frame is to start, ensure all data being processed is current and
     accurate to intended state via combining threads at the end before the final call is issued for simulation
