@@ -180,10 +180,41 @@ I ended up switching my main language to C++, which I instantly started making a
 
 This is why you will see C# and C++ code snippets but for the most part the snippets are interchangable.
 
-# USER
+# USER/PROBLEM
 Pretty self explanatory... its the input you will recieve externally into your solution
 to a problem you are solving for the user or client.
 
+## Data
+The input given by the user or some way or another acquired through any means.
+
+This represents a change in some state that the user wishes to impact, in terms of gameplay logic:
+- User wants to move a character so they will input Key_W
+- User wants to sprint and jump over a hole, input is Key_Shift && Key_W && Key_Space
+
+This can also be applied to any input... ie UI:
+- Press button: input = mouse position, is hovering, has pressed, button visible, button released -> do logic
+
+It is your job to take in this input and process it to allow the intended functionality to occur,
+this is your problem that you must solve.
+
+#### Side Note
+You can also be the user defining your own problem and solving it, this is what you create when you
+have explicit functionality inside a product or app, a user wont know there is a bounds or position to a button,
+but you know you need that data so you created it to allow it to be rendered at some spot in screen space for
+your app.
+
+## System
+
+## Where
+
+## When
+
+## How
+
+## Errors
+
+
+#### Simplified
 - data = input
 - system = state given from data
 - where = stored on stack per frame
@@ -191,11 +222,25 @@ to a problem you are solving for the user or client.
 - how = read from OS IO or api or packets, however you get data (ie. glfw)
 - error = none because its strict controlled whats allowed to interact
 
-# SERVICE
+# SERVICE/SOLUTION
 Services are the solution to the problem you are attempting to solve through programming.
 Data acts as the state of the problem while systems are the helpers that alter the data,
 to ensure data stays correct and current for the problem being given(input).
 
+## Data
+
+## System
+
+## Where
+
+## When
+
+## How
+
+## Errors
+
+
+#### Simplified
 - data = state or defaults
 - system = convert input data to data state change
 - where = long lived on heap or stack ouside frame refresh loop(top of main entry or app struct)
@@ -207,6 +252,9 @@ to ensure data stays correct and current for the problem being given(input).
 The course of flow on how an app or process should execute such that it causes minimal waste
 for the hardware.
 
+
+
+#### Simplified
 - input
 - store data
 - process data
@@ -225,6 +273,11 @@ hardware you are introducing arbitrary steps it needs to take to get to where it
 prefer building bottom up instead of top down it will make your life much easier if you know what your
 lowest point will be before you dig yourself a pit that cannot be escaped with more depth.
 
+
+
+
+
+#### Simplified
 - Main = your entry point and where the stack begins
 
 - Clean = save state and unload memory
@@ -269,6 +322,9 @@ count for individual data. when a  new frame is to start, ensure all data being 
 accurate to intended state via combining threads at the end before the final call is issued for simulation
 or rendering.
 
+
+
+#### Simplified
 (Stream = thread or pipeline)
 
 1. Recieve input data
