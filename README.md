@@ -33,7 +33,6 @@ bundled as required for OOP to work, this is a lie.
 OOD is flawed in many ways that most do not grasp nor want to grasp because it would be like invalidating
 years of their lifes work and money spent on a degree that teaches these principles. So, why is it flawed?
 
----
 
 ### The Underlying Issues
 OOD operates on principles that encourages a tree like structure for defining the shape of your coding "world"
@@ -127,8 +126,6 @@ and problem of cutting a tree.
 In the beginning of this manifesto I stated that this was something I learned as progressed through coding for the
 first time, let me clarify a summary of my journey to my current understanding to help envigorate you to maybe start
 questioning the industries standards and best practices:
-
----
 
 ## The Start
 #### Month Sept 2024
