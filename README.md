@@ -1,7 +1,10 @@
 # Manifesto
     STRUCTURE FLOW FOR ALL CODE
 
-# USER:
+# USER
+    Pretty self explainetory... its the input you will recieve externally into your solution
+    to a problem you are solving for the user or client.
+
     - data = input
     - system = state given from data
     - where = stored on stack per frame
@@ -9,7 +12,11 @@
     - how = read from os IO or api that allows the same (glfw)
     - error = none because its strict controlled whats allowed to interact
 
-# SERVICE:
+# SERVICE
+    Services are the solution to the problem you are attempting to solve through programming.
+    Data acts as the state of the problem while systems are the helpers that alter the data,
+    to ensure data stays correct and current for the problem being given(input).
+
     - data = state or defaults
     - system = convert input data to data state change
     - where = long lived on heap or stack ouside frame refresh loop(top of main entry or app struct)
@@ -17,8 +24,9 @@
     - how = function calls that process input to new data or mut data predictibly
     - error = return empty or no data change and move to next proc call
 
-# ACTIONS:
-    The course of flow on how an app or process should execute such that it causes minimal waste for the hardware.
+# ACTIONS
+    The course of flow on how an app or process should execute such that it causes minimal waste
+    for the hardware.
 
     - input
     - store data
@@ -28,7 +36,7 @@
     - act on state (render and logic)
     - repeat
 
-# LAYERS:
+# LAYERS
     Layers depend on what kind of depth you are seeking or how high you wish to build instead of wideness
     in cases of wideness you get more bang for you buck due to being able to scale infinitely wide while
     still maintaining good performance but the taller you go the more indirection is introduced causing
@@ -49,7 +57,31 @@
     - Input = how you would like to recieve you data
     - Data = what do you actually need to solve the problem you are working on
         - This can be as much and as many as you need or want but dont go any lower in depth for data or you
-            run into making a chain of hierarchies which will start to hurt you in the long run, prefer putting
-            other data inside new data if you need common functionality this can be through general purpose utility
-            data that is meant to live in other data or one off variables with common relatives in other data.
-            (composition = wideness | inheritence = depth at this level)
+        run into making a chain of hierarchies which will start to hurt you in the long run, prefer putting
+        other data inside new data if you need common functionality this can be through general purpose utility
+        data that is meant to live in other data or one off variables with common relatives in other data.
+        (composition = wideness | inheritence = depth at this level)
+
+# LOGIC FLOW
+    Logic should always be handled top down towards the final process call that holds the highest mutation
+    count for individual data. when a  new frame is to start, ensure all data being processed is current and
+    accurate to intended state via combining threads at the end before the final call is issued for simulation
+    or rendering.
+
+    (Stream = thread or pipeline)
+
+    1. Recieve input data
+    2. Determine which stream it should follow
+    3. Grab any data that the new state will affect
+        - This to can follow these steps for individual function calls as each function is a flow.
+    4. Mutate or make new data
+    5. Handle potential errors with return values or inline logic to correct corruption
+    6. Return or store transformations
+
+# DATA STORAGE:
+
+
+# MULTI-THREADING:
+
+
+# ERROR HANDLING:
