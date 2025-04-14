@@ -1,8 +1,9 @@
-# Manifesto
+# Manifesto + Bio
 STRUCTURE FLOW OF ALL CODE FOR DATA NOT OBJECTS
 
 ## Intro
-A DOD look-about based on my personal journey learning how to code from scratch.
+A DOD look-about based on my personal journey learning how to code from scratch along with the
+lessons ive learned about code along the way through trial and error.
 
 This is first and foremost a manifesto to myself and to those who want to adopt a
 better way of thinking about code and hardware as one entity together rather than obfuscating
@@ -17,11 +18,11 @@ DOD is a focus on data specifically what, how and where... We are first problem 
 when we write code or program we are being very intentional in what it is we wish to accomplish.
 
 So when you look at the issue and want to find a solution under DOD you first determine what the problem
-is and what data that problem represents. If a problem is really large? If you were in college you should
+is and what data that problem represents. If a problem is really large? If you came from college you should
 know about making larger problems into smaller ones that are easier to understand and decide what to do with,
 DOD is basically that but on crack for data.
 
-OOP is what pretty much everyone in the industry uses and understands, for those who are new here is a quick
+OOP is what pretty much everyone in the industry uses and understands, for those who are new, here is a quick
 understanding. You are to define and describe in code what an object is, this is done through determining the
 problem and deriving objects you think you'll need through data and logic and this will be placed inside of
 a class which is stored on the heap in most languages.
@@ -53,7 +54,7 @@ game logic, now I need a "new tree path" for code that already exists in another
 chain from DynamicObject instead of StaticObject. Like dude just make a tree struct that holds data relative
 to the tree alone and add a bool or flag to it to determine if it can be cut...
 
-That is the difference between DOD and OOD, you can still use OOP for DOD mind you, let me show you some VS examples:
+That is the difference between DOD and OOD, you can still use OOP for DOD mind you, let me show you some versus examples:
 ```C#
 class GameObject {}
 class StaticObj : GameObject {}
@@ -123,6 +124,8 @@ if any are cuttable add to a smaller array and use that instead for whenever a p
 
 It's extremely simple and straightfoward, no inheritance just logic and data defined explicitly for the use case
 and problem of cutting a tree.
+---
+Some closing statements before we move on.
 
 ### What DOD is not:
 - It's not procedural.
@@ -136,19 +139,32 @@ DOD is great but its only as good as you make your flow and how tightly you can 
 data is accessed in your program. This does not make it hard, even if it feels like it at first if you are
 coming from OOD, but I promise you the moment you get it, you get it forever and you won't be going back.
 
-# My  Journey to understanding and becoming a Programmer
+If you are ready to shift your perspective and dive deeper into the rabbit hole I highly encourage researching
+blogs and videos on it. Personally I was deeply inspired to pick up coding again because of a cppcon talk by
+Mike Acton where he discusses DoD and ECS in great detail and everytime I go back to rewatch I always come away
+with some new knowledge that was hidden under the insights he had to offer.
+
+Now I would like to provide some background as to how I even got started down this path, a time frame dislaimer,
+I have "coded" before but in reality I was just a unity script kiddy that jumped between projects every other year.
+I first learned of code through GameMaker Studio way back when I was in middle school and had been infatuated since...
+
+Anyways, you don't care about my personal history, you are here for how I can so boldy claim to make a manifesto
+when I have no background. So I say to that...
+
+# My Journey to understanding and becoming a Programmer
 In the beginning of this manifesto I stated that this was something I learned as progressed through coding for the
-first time, let me clarify a summary of my journey to my current understanding to help envigorate you to maybe start
+first time, let me clarify my journey to my current understanding to help invigorate you to maybe start
 questioning the industries standards and best practices:
 
 ## The Start
 #### Month Sept 2024
 I started to learn how to be a programmer for the first time in Sept 2024, my goal? Make a fully dynamic stat generator
 for a unity game idea I had for a stat collector style game that actually caused impact... Over some time working on it
-I learned many things like the differences between structs and classes, how to properly use an enum, how to make a loop.
+I learned many things like the differences between structs and classes, how to properly use an enum, how to make a
+"proper loop" heh.
 
 I was really entralled by the idea of being a programmer, however, every time I picked up coding again it felt tedious
-to try and code using OOD it just always felt confusing even when I did start understanding some of it, this time felt
+to try and code it just always felt confusing even when I did start understanding some of it, this time though, felt
 different for some reason, as if I knew a change was coming...
 
 #### November
@@ -161,6 +177,12 @@ the time fully grasp the usage concepts even though I knew what they were saying
 Iteration after iteration I coded for 8+ hours a night with many refactors, which I've grown to love doing, and yet I
 just could not make the stat gen work and I gave up on the idea...
 
+Notable Learning:
+- enum as flags
+- differences between class/struct/record
+- separation of concerns
+- funny but, preplanning system architecture
+
 #### Nov -> 2025
 I did NOT give up on programming this time and instead I made a new project for just a ECS engine in C# and got the first
 generic based ECS working with a shit ton of Dictionaries and Queues...
@@ -169,6 +191,27 @@ It was shit and ran like it too, BUT I learned and decided to scrap it and start
 and again.... again, I made a total of 5 working ECS in C# and made small test games with them (console+logic)
 and it was soooo much fun.
 
+Notable Learning:
+- bitwise operations
+- struct only as data
+- got rid of all inheritence
+- honed in scope creep
+- store all like data in one array per type
+- structure a pipeline of logic flow
+- dependency injection
+- Array of structs vs Struct of arrays
+- Cache layouts/lines/locality
+- CPU L1/L2/L3 vs RAM access
+- hot and cold paths
+- hot data needs to be isolated from any cold data
+- meta categorizing through id and bi directional lookups
+- some reflection
+- i hate generics in c#
+- GC overhead and managed vs unamanged
+- there are more but ill save it...
+
+these are not buzzwords this is literally what i learned during this timeframe.
+
 #### Start of Feb
 My fifth implementation was my best so far utilizing unsafe code to make custom allocators and byte based buffers with
 direct casting for the best cache locality I could attempt for my knowledge.
@@ -176,6 +219,25 @@ direct casting for the best cache locality I could attempt for my knowledge.
 It was pushing logically 50 million plus entities a second with 10-15 components of varying byte size and this was with
 AoS and not SoA beacuse of its generic nature without source generation.
 
+##### End of Feb -> April
+This can be bullet pointed because it combines most of what i did in Feb through early April.
+
+Notable Learning:
+- Unsafe C#
+- Pointer arithmatic
+- pointers vs addresses
+- pointer casts to ref conversion
+- type reinterpretation
+- void* buffers manually heap allocated with marshal
+- controlled memory
+- arena/allocators/stack buffers(struct with fixed[])
+- literally made a custom flat dictionary with custom hash logic and flat arrays indexed with bitwise indexing
+    using an encoder/decoder based on array of ulongs where each bit represented a occupied index in another array :D
+- decided fighting C# language limitations wasnt worth my headaches and switch to C++, best decision ever...
+- "learned" general C++ in a week and started making a UI Engine for a notes app in opengl with glfw to
+    read input and render text and backgrounds. 60% finished just need rendering side and some textures.
+
+Till today now a little under 7 months from starting to program... like actually this time.
 ---
 
 ### Finish
@@ -184,7 +246,18 @@ So when I say "I learned how to program" I literally learned how to program in 6
 *cough* "error", and to top it off I was using OOP because it was C# and OOP is enforced with C#, however I fully went
 about internalizing and truly learning DOD in and out to make sure I was getting better.
 
-## The Jounery's Lessons Tought
+I didn’t follow a course, I followed my curiosity, Every failure taught me something specific, new and tuned to  what I
+wanted to acheive as a programmer. (trial by error)
+
+Every rebuild made it cleaner, Every limitation pushed me into deeper waters always forcing me to rethink EVERYTHING,
+all the time. (my refactors)
+
+If I had waited for the perfect time or right amount of watching youtube, I wouldn’t have started I would've just sat
+in my void of space endlessly watching something I was passionate about without any pursuit.
+
+It was and still is my obsession to write good, clean and most of all performant code by thinking like a CPU...D.O.D
+
+## The Jounery's Lessons Taught
 So sorry for the long exposition, but as a notation to what I truly mean by learned to program, here is a comprehensive
 understanding of MY understanding of what programming looks like in my head, as this is my manifesto to me and to
 those who want to be on a journey to DOD enlightenment haha.
@@ -195,7 +268,7 @@ I ended up switching my main language to C++, which I instantly started making a
 This is why you will see C# and C++ code snippets but for the most part the snippets are interchangable.
 
 # USER/PROBLEM
-Pretty self explanatory... its the input you will recieve externally into your solution
+Pretty self explanatory... its the input you will receive externally into your solution
 to a problem you are solving for the user or client.
 
 ## Data
@@ -256,7 +329,7 @@ I would like to add in the case of input data becoming stored data, they are mai
 
 ## How
 This depends on what program/problem you are trying to solve, which leaves this quite ambiguous but I can offer some
-insight into how to handle recieving input.
+insight into how to handle receiving input.
 
 Methods of input:
 - Hardware
@@ -265,7 +338,7 @@ Methods of input:
 - API requests
 - Database Queries
 - Disk IO
-- many many many more ways to recieve data
+- many many many more ways to receive data
 
 In all these cases your job is to find out what the best AND smallest representation of that data you can make.
 
@@ -295,7 +368,7 @@ gives you an output or alters already existing data to an outcome you can use an
 the solution.
 
 ## Data
-Services take in data rather that hold data for long term. The data recieved depends on what
+Services take in data rather that hold data for long term. The data received depends on what
 the service you are making is meant to work on.
 
 Your entire program is a service but at a large scale, if you shrink all problems down to their
@@ -436,7 +509,7 @@ lowest point will be before you dig yourself a pit that cannot be escaped with m
 
 - Process = systems that act on input to change data
 - Store = where or how data is stored based on input
-- Input = how you would like to recieve you data
+- Input = how you would like to receive you data
 - Data = what do you actually need to solve the problem you are working on
     - This can be as much and as many as you need or want but dont go any lower in depth for data or you
     run into making a chain of hierarchies which will start to hurt you in the long run, prefer putting
@@ -477,7 +550,7 @@ or rendering.
 #### Simplified
 (Stream = thread or pipeline)
 
-1. Recieve input data
+1. receive input data
 2. Determine which stream it should follow
 3. Grab any data that the new state will affect
     - This to can follow these steps for individual function calls as each function is a flow.
