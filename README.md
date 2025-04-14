@@ -234,7 +234,7 @@ Notable Learning:
 - literally made a custom flat dictionary with custom hash logic and flat arrays indexed with bitwise indexing
     using an encoder/decoder based on array of ulongs where each bit represented a occupied index in another array :D
 - decided fighting C# language limitations wasnt worth my headaches and switch to C++, best decision ever...
-- "learned" general C++ in a week and started making a UI Engine for a notes app in opengl with glfw to
+- "learned" general C++ in a week and started making a UI Engine for a txt editor app with glad and glfw to
     read input and render text and backgrounds. 60% finished just need rendering side and some textures.
 
 Till today now a little under 7 months from starting to program... like actually this time.
