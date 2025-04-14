@@ -237,7 +237,7 @@ Notable Learning:
 - "learned" general C++ in a week and started making a UI Engine for a txt editor app with glad and glfw to
     read input and render text and backgrounds. 60% finished just need rendering side and some textures.
 
-Till today now a little under 7 months from starting to program... like actually this time.
+Till today now a little under 7 months from starting to program... like actually start this time.
 ---
 
 ### Finish
