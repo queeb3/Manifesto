@@ -38,7 +38,6 @@ bundled as required for OOP to work, this is a lie.
 OOD is flawed in many ways that most do not grasp nor want to grasp because it would be like invalidating
 years of their lifes work and money spent on a degree that teaches these principles. So, why is it flawed?
 
-
 ### The Underlying Issues
 OOD operates on principles that encourages a tree like structure for defining the shape of your coding "world"
 which provides the illusion that you are in fact coding a world to solve a problem, this means combining
@@ -151,6 +150,11 @@ I first learned of code through GameMaker Studio way back when I was in middle s
 Anyways, you don't care about my personal history, you are here for how I can so boldy claim to make a manifesto
 when I have no background. So I say to that...
 
+
+```
+*Disclaimer*: I am not claiming to be a god of programming nor a "good programmer" just highlighting objective
+observations I made during my journey and how its shaped my mind and perspectives around code.
+```
 # My Journey to understanding and becoming a Programmer
 In the beginning of this manifesto I stated that this was something I learned as progressed through coding for the
 first time, let me clarify my journey to my current understanding to help invigorate you to maybe start
@@ -246,7 +250,7 @@ So when I say "I learned how to program" I literally learned how to program in 6
 *cough* "error", and to top it off I was using OOP because it was C# and OOP is enforced with C#, however I fully went
 about internalizing and truly learning DOD in and out to make sure I was getting better.
 
-I didn’t follow a course, I followed my curiosity, Every failure taught me something specific, new and tuned to  what I
+I didn’t follow a course, I followed my curiosity, Every failure taught me something specific, new and tuned to what I
 wanted to acheive as a programmer. (trial by error)
 
 Every rebuild made it cleaner, Every limitation pushed me into deeper waters always forcing me to rethink EVERYTHING,
@@ -256,6 +260,7 @@ If I had waited for the perfect time or right amount of watching youtube, I woul
 in my void of space endlessly watching something I was passionate about without any pursuit.
 
 It was and still is my obsession to write good, clean and most of all performant code by thinking like a CPU...D.O.D
+
 
 ## The Jounery's Lessons Taught
 So sorry for the long exposition, but as a notation to what I truly mean by learned to program, here is a comprehensive
