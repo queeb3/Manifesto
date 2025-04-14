@@ -4,10 +4,14 @@ STRUCTURE FLOW OF ALL CODE FOR DATA NOT OBJECTS
 ## Intro
 A DoD look-about based on my personal journey learning how to code from scratch.
 
+This is first and foremost a manifesto to myself and to those who want to adopt a
+better way of thinking about code and hardware as one entity together rather than obfuscating
+and abstracting as far away as possible from the very thing that runs your damn code.
+
 ### DoD OOP OOD:
-First to some who read this if any, DoD otherwise know as Data Oriented Design is a way
-of thinking as well as a stylization for how to structure your code, it does not inheriently
-prevent the use of OOP but it conflicts with the principles of OOD.
+First to some who read this if any, DoD or Data Oriented Design is a way of thinking as well
+as a stylization for how to structure your code, it does not inheriently prevent the use
+of OOP but it conflicts with the principles of OOD.
 
 DoD is a focus on data specifically what, how and where... We are first problem solvers above all else,
 when we write code or program we are being very intentional in what it is we wish to accomplish.
@@ -18,12 +22,12 @@ know about making larger problems into smaller ones that are easier to understan
 DoD is basically that but on crack for data.
 
 OOP is what pretty much everyone in the industry uses and understands, for those who are new here is a quick
-understand. You are to define and describe in code what an object is, this is done through, like DoD,
-determining the problem and deriving objects you think you'll need through data and logic and this will
-be placed inside of a class which is stored on the heap in most languages.
+understanding. You are to define and describe in code what an object is, this is done through determining the
+problem and deriving objects you think you'll need through data and logic and this will be placed inside of
+a class which is stored on the heap in most languages.
 
-OOP is compatible with DoD, however, most people do not use it with DoD in mind they rather combine,
-data and logic togeter in a object with a name that represents what it defines and declares itself to be,
+OOP is compatible with DoD, however, most people do not use it with DoD in mind they'd rather fuse data and
+logic into an object parading itself as a "Real world noun" that represents what it defines itself to be,
 self containing all logic and all its own personal data, this is called OOD and it causes a massive
 issue for the hardware.
 
@@ -120,7 +124,17 @@ if any are cuttable add to a smaller array and use that instead for whenever a p
 It's extremely simple and straightfoward, no inheritance just logic and data defined explicitly for the use case
 and problem of cutting a tree.
 
----
+### What DoD is not:
+- It's not procedural.
+- It's not anti-OOP.
+- It's not an immediate fix. (you still need to write good code)
+- It's definitely not "less readable".
+- It's not just performance, it's controlling flow for performance.
+- And it does not scale poorly at size or make code harder to maintain, quite the opposite.
+
+DoD is great but its only as good as you make your flow and how tightly you can control where and how you
+data is accessed in your program. This does not make it hard, even if it feels like it at first if you are
+coming from OOD, but I promise you the moment you get it, you get it forever and you won't be going back.
 
 # My  Journey to understanding and becoming a Programmer
 In the beginning of this manifesto I stated that this was something I learned as progressed through coding for the
@@ -204,38 +218,174 @@ but you know you need that data so you created it to allow it to be rendered at 
 your app.
 
 ## System
+The logic you implement to convert input to state data that will cause a change in state for the program's
+memory.
+
+This can be be converting the mouse movement on screen to camera movement in a game, this is a change in state
+for the camera position and angle, as well as a change in render state which is further down the flow.
 
 ## Where
+Prefer keeping input state as a per frame state, this will allow modifications to proceed smoothly without
+worrying about corrupting internal memory as all new input overrides all old inputs.
+
+There are circumstances where input data translates to stored data without causing a change in state, in these
+cases you have something called a database :D, where the state reflected is the state captured upon input and
+most likely will get pushed to disk by some save state call.
+
+If you are working in realtime apps that run in a loop and not a on demand basis, if you must store input
+states through frames, I would recommend creating a in function buffer, queue, or stack that simply holds
+X number amount of past frame states preferably stack only without pushing frame states to heap to avoid
+fragmentation and CPU churn.
+
+Summary of where's, as most prefered to least:
+- Per frame
+- In entry point as single or buffer of history snapshots (stack alloc)
+- Heap only if it is state that must be captured for long life executions
+- Disk you are probably making a database
 
 ## When
+This is the first thing you do in your loop aside from if you are using external tools that require priority.
+
+Input is always the first piece of data to enter and last to change because its the mutation factor altering
+your stored data.
+
+I would like to add in the case of input data becoming stored data, they are mainly three different things:
+- Incoming data is stored as the main data or used to alter the data already stored.
+- Stored data is data given, saved for later use directly from input.
+- Outgoing data is previously input state data that has been requested, does not always mean destroyed.
 
 ## How
+This depends on what program/problem you are trying to solve, which leaves this quite ambiguous but I can offer some
+insight into how to handle recieving input.
 
-## Errors
+Methods of input:
+- Hardware
+- Service
+- Packets
+- API requests
+- Database Queries
+- Disk IO
+- many many many more ways to recieve data
 
+In all these cases your job is to find out what the best AND smallest representation of that data you can make.
+
+Some data may come fully packaged already and all you need to do is parse the pieces you need, why store what you aren't
+using after all. Make a struct and add the parameters you wish to keep and call it UsefulInputdata or something based on
+your desired naming conventions.
+
+Then you would want to start pushing it through your logic pipeline to extract, store, process all the little pieces of the
+important bits that you care about and that is the end of the life cycle for this specific input.
 
 #### Simplified
 - data = input
 - system = state given from data
-- where = stored on stack per frame
+- where = stored on stack per frame (prefer)
 - when = instant and first
 - how = read from OS IO or api or packets, however you get data (ie. glfw)
-- error = none because its strict controlled whats allowed to interact
+- error = none because it should be strictly controlled whats allowed in your solution at the get-go
 
 # SERVICE/SOLUTION
 Services are the solution to the problem you are attempting to solve through programming.
+
 Data acts as the state of the problem while systems are the helpers that alter the data,
 to ensure data stays correct and current for the problem being given(input).
 
+A service is basically a flow of logic through functions that take in input as parameters and
+gives you an output or alters already existing data to an outcome you can use and deliver as
+the solution.
+
 ## Data
+Services take in data rather that hold data for long term. The data recieved depends on what
+the service you are making is meant to work on.
+
+Your entire program is a service but at a large scale, if you shrink all problems down to their
+smallest form you get a few different types of services.
+
+Here are a few examples:
+
+#### App
+```c++
+int main(){
+    App app;
+
+    app.Load();
+    while (app.Active)
+    {
+        // insert any higher priority api here
+        app.Process();
+    }
+
+    app.Unload();
+    return 0;
+}
+
+```
+#### Pipeline
+```c++
+struct App{
+    Input in;
+    Data data;
+    RenderPipe rp;
+
+    bool Load(const Input &i);
+    void Process();
+    void Unload();
+};
+
+struct Data{ // AoS style storage of multiple data streams
+    Buffer SomeData[];
+    Buffer OtherData[];
+    Buffer MetaData[];
+    Buffer RenderData[];
+
+    bool Init_Data();
+    void Update();
+};
+
+struct RenderPipe{
+    Buffer renderthese[];
+    Buffer commands[];
+
+    bool Init_Render();
+    void Render();
+};
+```
+#### Function
+```c++
+void App::Process()
+{
+    in.mouse.Update();
+    in.keyboard.Update();
+
+    data.Update(in.mouse.state, in.keyboard.states);
+}
+```
+#### Read Write
+```c++
+bool Data::Init_Data()
+{
+    // read some defaults or config or set inital states
+
+    SomeData = config.somedef;
+    OtherData = other.Load();
+    MetaData = SomeData.GetMeta();
+    RenderData = SomeData.GetRenderData();
+
+    // alternatively populate with file reads from source directory or database
+}
+```
 
 ## System
 
+
 ## Where
+
 
 ## When
 
+
 ## How
+
 
 ## Errors
 
