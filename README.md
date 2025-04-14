@@ -2,31 +2,31 @@
 STRUCTURE FLOW OF ALL CODE FOR DATA NOT OBJECTS
 
 ## Intro
-A DoD look-about based on my personal journey learning how to code from scratch.
+A DOD look-about based on my personal journey learning how to code from scratch.
 
 This is first and foremost a manifesto to myself and to those who want to adopt a
 better way of thinking about code and hardware as one entity together rather than obfuscating
 and abstracting as far away as possible from the very thing that runs your damn code.
 
-### DoD OOP OOD:
-First to some who read this if any, DoD or Data Oriented Design is a way of thinking as well
+### DOD OOP OOD:
+First to some who read this if any, DOD or Data Oriented Design is a way of thinking as well
 as a stylization for how to structure your code, it does not inheriently prevent the use
 of OOP but it conflicts with the principles of OOD.
 
-DoD is a focus on data specifically what, how and where... We are first problem solvers above all else,
+DOD is a focus on data specifically what, how and where... We are first problem solvers above all else,
 when we write code or program we are being very intentional in what it is we wish to accomplish.
 
-So when you look at the issue and want to find a solution under DoD you first determine what the problem
+So when you look at the issue and want to find a solution under DOD you first determine what the problem
 is and what data that problem represents. If a problem is really large? If you were in college you should
 know about making larger problems into smaller ones that are easier to understand and decide what to do with,
-DoD is basically that but on crack for data.
+DOD is basically that but on crack for data.
 
 OOP is what pretty much everyone in the industry uses and understands, for those who are new here is a quick
 understanding. You are to define and describe in code what an object is, this is done through determining the
 problem and deriving objects you think you'll need through data and logic and this will be placed inside of
 a class which is stored on the heap in most languages.
 
-OOP is compatible with DoD, however, most people do not use it with DoD in mind they'd rather fuse data and
+OOP is compatible with DOD, however, most people do not use it with DOD in mind they'd rather fuse data and
 logic into an object parading itself as a "Real world noun" that represents what it defines itself to be,
 self containing all logic and all its own personal data, this is called OOD and it causes a massive
 issue for the hardware.
@@ -53,7 +53,7 @@ game logic, now I need a "new tree path" for code that already exists in another
 chain from DynamicObject instead of StaticObject. Like dude just make a tree struct that holds data relative
 to the tree alone and add a bool or flag to it to determine if it can be cut...
 
-That is the difference between DoD and OOD, you can still use OOP for DoD mind you, let me show you some VS examples:
+That is the difference between DOD and OOD, you can still use OOP for DOD mind you, let me show you some VS examples:
 ```C#
 class GameObject {}
 class StaticObj : GameObject {}
@@ -72,9 +72,9 @@ described especially since OOD and OOP are so good and is the "industry standard
 Now let me show you another way that achieves the same outcome with vastly different qualities and performance
 boosts by nature:
 
-### DoD (Composition data only)
+### DOD (Composition data only)
 ```c++
-// again you can do DoD in OOP
+// again you can do DOD in OOP
 struct GameObjectData {
     bool IsStatic;
     int Id;
@@ -124,7 +124,7 @@ if any are cuttable add to a smaller array and use that instead for whenever a p
 It's extremely simple and straightfoward, no inheritance just logic and data defined explicitly for the use case
 and problem of cutting a tree.
 
-### What DoD is not:
+### What DOD is not:
 - It's not procedural.
 - It's not anti-OOP.
 - It's not an immediate fix. (you still need to write good code)
@@ -132,7 +132,7 @@ and problem of cutting a tree.
 - It's not just performance, it's controlling flow for performance.
 - And it does not scale poorly at size or make code harder to maintain, quite the opposite.
 
-DoD is great but its only as good as you make your flow and how tightly you can control where and how you
+DOD is great but its only as good as you make your flow and how tightly you can control where and how you
 data is accessed in your program. This does not make it hard, even if it feels like it at first if you are
 coming from OOD, but I promise you the moment you get it, you get it forever and you won't be going back.
 
@@ -152,7 +152,7 @@ to try and code using OOD it just always felt confusing even when I did start un
 different for some reason, as if I knew a change was coming...
 
 #### November
-After roughly a month of working I discovered a video on ECS that talked about DoD for the first time in my life
+After roughly a month of working I discovered a video on ECS that talked about DOD for the first time in my life
 something made a little more sense with code speak, I do not know why but what they were saying just made sense in my
 head and sounded logical and reasonable for how a computer should act on and read data. So I started to change my stat
 system into a standalone ECS style stat generator, of course I was still using OOP and OOD to do it because I didn't at
@@ -182,12 +182,12 @@ AoS and not SoA beacuse of its generic nature without source generation.
 So when I say "I learned how to program" I literally learned how to program in 6 months to that level with absolutely
 0 formal eduction, no mentor aside from talks by Casey and Acton, and no tutorial EVER just sheer will and trial by fire,
 *cough* "error", and to top it off I was using OOP because it was C# and OOP is enforced with C#, however I fully went
-about internalizing and truly learning DoD in and out to make sure I was getting better.
+about internalizing and truly learning DOD in and out to make sure I was getting better.
 
 ## The Jounery's Lessons Tought
 So sorry for the long exposition, but as a notation to what I truly mean by learned to program, here is a comprehensive
 understanding of MY understanding of what programming looks like in my head, as this is my manifesto to me and to
-those who want to be on a journey to DoD enlightenment haha.
+those who want to be on a journey to DOD enlightenment haha.
 
 I would like to add I actually got fed up with dealing with OOP limitations and specifically the limitations of C#
 I ended up switching my main language to C++, which I instantly started making a UI engine as my first project.
